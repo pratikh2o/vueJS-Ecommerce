@@ -12,14 +12,27 @@
             >
           </li>
           <li class="nav-item">
-            <router-link to="/login" class="nav-link navbar-link"
+            <router-link to="/login" class="nav-link navbar-link" v-if="!user"
               >Login</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link to="/register" class="nav-link navbar-link"
+            <router-link
+              to="/register"
+              class="nav-link navbar-link"
+              v-if="!user"
               >Rigister</router-link
             >
+          </li>
+          <li class="nav-item">
+            <span
+              class="nav-link navbar-link text-danger"
+              role="button"
+              v-if="user"
+              @click="signOut"
+            >
+              Signout
+            </span>
           </li>
         </ul>
       </div>
@@ -28,8 +41,25 @@
 </template>
 
 <script>
+import { isUser, signout } from "../api/auth";
 export default {
   name: "NavComp",
+  data: function () {
+    return {
+      user: false,
+    };
+  },
+  methods: {
+    signOut: function () {
+      signout(() => {
+        this.$router.go();
+      });
+    },
+  },
+
+  created: function () {
+    this.user = isUser();
+  },
 };
 </script>
 
