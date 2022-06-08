@@ -12,6 +12,11 @@
             >
           </li>
           <li class="nav-item">
+            <router-link to="/cart" class="nav-link navbar-link"
+              >Cart</router-link
+            >
+          </li>
+          <li class="nav-item">
             <router-link to="/login" class="nav-link navbar-link" v-if="!user"
               >Login</router-link
             >
