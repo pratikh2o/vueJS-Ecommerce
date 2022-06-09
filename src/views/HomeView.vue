@@ -1,6 +1,7 @@
 <template>
   <div>
     <NavComp />
+
     <div>
       <h1 class="text-center m-3">Vue ECOM</h1>
       <div class="container py-5">
@@ -10,7 +11,16 @@
             v-for="product of products"
             :key="product._id"
           >
-            <ProductCard :product="product" />
+            <ProductCard :product="product" :added="added" :remove="remove" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="loading">
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col">
+            <SpinnerComp />
           </div>
         </div>
       </div>
@@ -23,6 +33,7 @@
 import NavComp from "../components/NavComp.vue";
 import FooterComp from "../components/FooterComp.vue";
 import ProductCard from "../components/ProductCard.vue";
+import SpinnerComp from "../components/SpinnerComp.vue";
 import { getAllProduct } from "../api/product";
 export default {
   name: "HomeView",
@@ -30,12 +41,15 @@ export default {
     NavComp,
     FooterComp,
     ProductCard,
+    SpinnerComp,
   },
   data: function () {
     return {
       products: [],
       loading: false,
       error: "",
+      added: true,
+      remove: false,
     };
   },
 
@@ -43,7 +57,6 @@ export default {
     try {
       this.loading = true;
       let res = await getAllProduct();
-      console.log(res);
       this.products = res.data.products;
       this.loading = false;
     } catch (error) {

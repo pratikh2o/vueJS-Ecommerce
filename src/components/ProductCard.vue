@@ -16,6 +16,7 @@
           style="padding-left: 2.5rem; padding-right: 2.5rem"
           @click="addCart"
           :disabled="addedToCart"
+          v-if="added"
         >
           {{ addedToCart ? "ADDED" : "ADD" }} TO CART
         </button>
@@ -23,9 +24,17 @@
           class="btn btn-primary btn-lg mt-3"
           style="padding-left: 2.5rem; padding-right: 2.5rem"
           :disabled="addedToCart"
+          v-if="added"
           @click="buyProduct"
         >
           BUY NOW
+        </button>
+        <button
+          class="btn btn-danger"
+          v-if="remove"
+          @click="$emit('remove-task', product._id)"
+        >
+          REMOVE
         </button>
         <div class="d-flex justify-content-between total font-weight-bold mt-4">
           <span>Price</span><span class="fw-bold">${{ product.price }}</span>
@@ -40,7 +49,7 @@ import { API } from "../backendAPI";
 import { addPoductToCart, loadCart } from "../api/product";
 export default {
   name: "ProductCard",
-  props: ["product"],
+  props: ["product", "added", "remove"],
   data() {
     return {
       url: API,
@@ -72,5 +81,6 @@ export default {
       }
     });
   },
+  emits: ["remove-task"],
 };
 </script>
