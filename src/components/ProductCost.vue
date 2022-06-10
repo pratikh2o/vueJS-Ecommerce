@@ -36,7 +36,7 @@
                   <td class="left">
                     <strong>Subtotal</strong>
                   </td>
-                  <td class="right">$8.497,00</td>
+                  <td class="right">${{ totalPrice }}</td>
                 </tr>
                 <tr>
                   <td class="left">
@@ -55,7 +55,7 @@
                     <strong>Total</strong>
                   </td>
                   <td class="right">
-                    <strong>$7.477,36</strong>
+                    <strong>${{ totalPrice }}</strong>
                   </td>
                 </tr>
               </tbody>
@@ -70,6 +70,6 @@
 <script>
 export default {
   name: "ProductCost",
-  props: ["products"],
+  props: ["products", "totalPrice"],
 };
 </script>

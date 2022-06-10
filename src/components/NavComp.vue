@@ -6,11 +6,11 @@
           <li class="nav-item">
             <router-link to="/" class="nav-link navbar-link">Home</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/about" class="nav-link navbar-link"
               >About</router-link
             >
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link to="/cart" class="nav-link navbar-link"
               >Cart</router-link
@@ -29,6 +29,7 @@
               >Rigister</router-link
             >
           </li>
+
           <li class="nav-item">
             <span
               class="nav-link navbar-link text-danger"

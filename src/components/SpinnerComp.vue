@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container spi">
     <div class="row">
       <div class="col">
         <img src="../assets/giphy.gif" alt="" class="d-block m-auto" />
@@ -16,5 +16,9 @@ export default {
 <style scoped>
 img {
   width: 10%;
+}
+
+.spi {
+  margin-bottom: 307px;
 }
 </style>

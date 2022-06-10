@@ -1,7 +1,6 @@
 <template>
   <div>
     <NavComp />
-
     <div>
       <h1 class="text-center m-3">Vue ECOM</h1>
       <div class="container py-5">
